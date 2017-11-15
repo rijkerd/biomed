@@ -3,5 +3,7 @@ module.exports = {
     "727262959528-c6l08pqe923i2mctbt0egvppehrlmh69.apps.googleusercontent.com",
   googleClientSecret: "lJf2Ir4Zxd7YmRdZ3fifW2aw",
   mongoURI: "mongodb://127.0.0.1:27017/class",
-  cookieKey: "sgafdjskjljkgusyfw7689677890#jakdjksbbdsankdaksjd"
+  cookieKey: "sgafdjskjljkgusyfw7689677890#jakdjksbbdsankdaksjd",
+  facebookAppId:"1672736946134074",
+  facebookSecret:"a15dd084e5fc82ad97dc744ec0391583"
 };

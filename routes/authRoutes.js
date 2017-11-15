@@ -9,6 +9,20 @@ module.exports = app => {
 
   );
   app.get(
+    "/auth/facebook",
+    passport.authenticate('facebook',{
+      scope:["profile"]
+    })
+  );
+  app.get(
+    "/auth/facebook/callback",
+    passport.authenticate("facebook"),
+    (req,res) => {
+      res.send("Authenticated");
+    }
+  );
+
+  app.get(
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
