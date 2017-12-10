@@ -4,17 +4,21 @@
   "description": "My application for class room purposes",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node server.js",
+    "server":"nodemon server.js",
+    "webclient":"npm run start --prefix webclient",
+    "dev":"concurrently \"npm run server\" \"npm run webclient\""
   },
   "author": "Ricardo",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "mongoose": "^4.12.3",
     "passport": "^0.4.0",
+    "passport-auth0": "^0.6.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0"
   },
