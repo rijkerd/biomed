@@ -4,17 +4,19 @@
   "description": "My application for class room purposes",
   "main": "server.js",
   "scripts": {
-    "start":"node server.js",
-    "server":"nodemon server.js",
-    "webclient":"npm run start --prefix webclient",
-    "dev":"concurrently \"npm run server\" \"npm run webclient\""
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "webclient": "npm run start --prefix webclient",
+    "dev": "concurrently \"npm run server\" \"npm run webclient\""
   },
   "author": "Ricardo",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
+    "crypto": "^1.0.1",
     "express": "^4.16.2",
     "mongoose": "^4.12.3",
     "passport": "^0.4.0",
