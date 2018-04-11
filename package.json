@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "My application for class room purposes",
   "main": "server.js",
+  "engines":{
+    "node":"8.1.1",
+    "npm":"5.0.3"
+  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
