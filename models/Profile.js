@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const {Schema} = mongoose;
-var userDetails = './User'
 
 var userProfile = new Schema({
     _user:{type:Schema.Types.ObjectId,ref:'User'},

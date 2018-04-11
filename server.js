@@ -1,14 +1,14 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const cookieSession = require("cookie-session");
-const passport = require("passport");
+// const mongoose = require("mongoose");
+// const cookieSession = require("cookie-session");
+// const passport = require("passport");
 const bodyParser = require("body-parser");
-const keys = require("./config/dev");
+// const keys = require("./config/dev");
 // require("./models/User");
 // require("./services/passport");
 
 const app = express();
-mongoose.connect(keys.mongoURI);
+// mongoose.connect(keys.mongoURI);
 
 app.use(bodyParser.json());
 // app.use(
@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 
 //require("./routes/authRoutes")(app);
 
-app.get("*", (req, res) => {
-  res.send("Hello World");
+app.get("/", (req, res) => {
+  res.send("Hello World!!!!!!!!!");
 });
 
 const PORT = process.env.PORT || 5000;
