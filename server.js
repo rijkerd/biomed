@@ -1,32 +1,43 @@
 const express = require("express");
-// const mongoose = require("mongoose");
-// const cookieSession = require("cookie-session");
-// const passport = require("passport");
-const bodyParser = require("body-parser");
-// const keys = require("./config/dev");
-// require("./models/User");
-// require("./services/passport");
-
 const app = express();
-// mongoose.connect(keys.mongoURI);
-
-app.use(bodyParser.json());
-// app.use(
-//   cookieSession({
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: [keys.cookieKey]
-//   })
-// );
-//app.use(passport.initialize());
-//app.use(passport.session());
-
-//require("./routes/authRoutes")(app);
-
-app.get("/", (req, res) => {
-  res.send("Hello World!!!!!!!!!");
-});
-
 const PORT = process.env.PORT || 5000;
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('connect-flash');
+
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
+const session = require("express-session");
+
+
+const configDB = require("./config/keys");
+
+mongoose.connect(configDB.url);
+
+require('./services/passport')(passport);
+
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.set('view engine','ejs');
+
+app.use(session({
+  secret:'mdebwedokskadklaskldnasndsk',
+  resave:true,
+  saveUninitialized:true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
+
+require("./routes/authRoutes")(app,passport);
+
+
 app.listen(PORT, () => {
   console.log("App Listening on 5000");
 });

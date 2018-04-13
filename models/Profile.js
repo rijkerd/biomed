@@ -28,3 +28,5 @@ userProfile.methods.gravatar = (size) => {
     var md5 = crypto.createHash('md5').update(this._user).digest('hex');
     return 'https://gravator.com/avatar/' + md5 + '?s=' + size + '&d=retro';
 }
+
+mongoose.model('profile',userProfile);
