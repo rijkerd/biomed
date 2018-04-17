@@ -1,20 +1,6 @@
 
 module.exports = {
-    database:'mongodb://localhost:27017/classDB1',
-    secret:'jsdjfbsdf_DasdaASdsadmxzcndsufh'
+    database:'mongodb://localhost:27017/classDB1' || process.env.MONDO_URI,
+    secret:'jsdjfbsdf_DasdaASdsadmxzcndsufh' || process.env.SECRET
 }
 
-// if(!createUser){
-//     try{
-//         const newUser = await new User({
-//             email:email,
-//             password:generateHash(password)
-//         }).save();
-
-//         return done(null,newUser);
-//     }catch(e){
-//         console.log(e);
-//     }
-// }else{
-//     return done("The email already exists",false);
-// }

@@ -6,7 +6,7 @@ const User = require("../models/User");
 module.exports = app => {
   // Register User
   app.post("/register", (req, res, next) => {
-    let newUser = newUser({
+    let newUser = new User({
       admissionNumber: req.body.admissionNumber,
       email: req.body.email,
       username: req.body.username,
