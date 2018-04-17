@@ -22,19 +22,22 @@
     "concurrently": "^3.5.1",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.4",
     "crypto": "^1.0.1",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.2.1",
     "mongoose": "^4.12.3",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
-    "passport-local": "^1.0.0"
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "connect-flash": "^0.1.1",
-    "ejs": "^2.5.8",
+    "@angular/cli": "^1.7.4",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1"
   }
