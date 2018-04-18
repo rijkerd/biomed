@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const passport = require("passport");
 //const flash = require('connect-flash');
@@ -54,6 +53,6 @@ app.get("*",(req,res) => {
   res.sendFile(path.join(__dirname,'public/index.html'));
 })
 
-app.listen(PORT, () => {
+app.listen(keys.port, () => {
   console.log("App Listening on 5000");
 });
