@@ -1,7 +1,7 @@
 
 module.exports = {
-    database:'mongodb://localhost:27017/classDB1' || process.env.MONDO_URI,
-    secret:'jsdjfbsdf_DasdaASdsadmxzcndsufh' || process.env.SECRET,
-    port:5000 || process.env.PORT
+    database:process.env.MONDO_URI || 'mongodb://localhost:27017/classDB1',
+    secret:process.env.SECRET || 'jsdjfbsdf_DasdaASdsadmxzcndsufh',
+    port:process.env.PORT || 5000
 }
 
