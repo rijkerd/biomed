@@ -1,33 +1,54 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt-nodejs');
-const crypto = require('crypto');
+const bcrypt = require("bcryptjs");
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
-  admissionNumber:{type:Number, unique:true, minlength:11},
-  password:{type:String,unique:true},
-  //approved:Boolean
+const userSchema = Schema({
+  admissionNumber: {
+    type: Number
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
 });
 
+const User = (module.exports = mongoose.model("Users", userSchema));
 
-// Hash the password before saving it to the database
-userSchema.pre('save',(next) => {
-  var user = this;
-  if(!user.isModified('password')) return next();
-  bcrypt.genSalt(10,(err,salt) => {
-    if(err) return next(err);
-    bcrypt.hash(user.password,salt,null,(err,hash) => {
-      if(err) return next(err);
-      user.password = hash;
-      next();
+module.exports.getUserById = (id, cb) => {
+  User.findById(id, cb);
+};
+
+module.exports.getUserByUsername = (username, cb) => {
+  const query = { username: username };
+  User.findOne(query, cb);
+};
+
+module.exports.getUserByAdmissionNumber = (admissionNumber, cb) => {
+  const query = { admissionNumber: admissionNumber };
+  User.findOne(query, cb);
+};
+
+module.exports.addUser = (newUser, cb) => {
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(newUser.password, salt, (err, hash) => {
+      if (err) throw err;
+      newUser.password = hash;
+      newUser.save(cb);
     });
   });
-});
+};
 
-
-// Compare the password provided with the one in the database
-userSchema.methods.comparePassword = (password) => {
-  return bcrypt.compareSync(password,this.password);
-}
-
-module.exports = mongoose.model("user",userSchema);
+module.exports.comparePassword = (candidatePassword, hash, cb) => {
+  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+    if (err) throw err;
+    cb(null, isMatch);
+  });
+};

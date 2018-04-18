@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const {Schema} = mongoose;
-var userDetails = './User'
 
 var userProfile = new Schema({
     _user:{type:Schema.Types.ObjectId,ref:'User'},
@@ -29,3 +28,5 @@ userProfile.methods.gravatar = (size) => {
     var md5 = crypto.createHash('md5').update(this._user).digest('hex');
     return 'https://gravator.com/avatar/' + md5 + '?s=' + size + '&d=retro';
 }
+
+mongoose.model('profile',userProfile);
