@@ -54,5 +54,5 @@ app.get("*",(req,res) => {
 })
 
 app.listen(keys.port, () => {
-  console.log("App Listening on 5000");
+  console.log(`App Listening on ${keys.port} `);
 });
