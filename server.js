@@ -33,11 +33,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: "mdebwedokskadklaskldnasndsk",
+    secret:keys.secret,
     resave: true,
     saveUninitialized: true
   })
 );
+// app.use(function(req, res, next) { //allow cross origin requests
+//   res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
+//   res.header("Access-Control-Allow-Origin", `http://localhost:${keys.port}`);
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
 app.use(passport.initialize());
 //app.use(passport.session());
 //app.use(flash());
