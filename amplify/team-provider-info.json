@@ -14,6 +14,12 @@
         "categories": {
             "auth": {
                 "biomed2b8f0607": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d269xn1iq3qzq5",
+                    "type": "cicd"
+                }
             }
         }
     }
