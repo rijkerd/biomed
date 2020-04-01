@@ -1,0 +1,15 @@
+{
+    "develop": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-biomed-develop-155515-authRole",
+            "UnauthRoleArn": "arn:aws:iam::539518086188:role/amplify-biomed-develop-155515-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::539518086188:role/amplify-biomed-develop-155515-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "amplify-biomed-develop-155515-deployment",
+            "UnauthRoleName": "amplify-biomed-develop-155515-unauthRole",
+            "StackName": "amplify-biomed-develop-155515",
+            "StackId": "arn:aws:cloudformation:eu-central-1:539518086188:stack/amplify-biomed-develop-155515/0f208cd0-7418-11ea-a09d-06fecd730058",
+            "AmplifyAppId": "d269xn1iq3qzq5"
+        }
+    }
+}
