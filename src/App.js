@@ -1,17 +1,24 @@
-import React, { useReducer, useContext, createContext } from "react";
+import React from "react";
+import { withAuthenticator } from "aws-amplify-react";
 
-export const StateContext = createContext();
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
 
-console.log(StateContext);
-
-export const StateProvider = ({ reducer, initialState, children }) => (
-  <StateContext.Provider value={useReducer(reducer, initialState)}>
-    {children}
-  </StateContext.Provider>
-);
-
-export const useStateValue = () => useContext(StateContext);
-
-const App = () => <h1>Hello world</h1>;
-
-export default App;
+export default withAuthenticator(App, true);

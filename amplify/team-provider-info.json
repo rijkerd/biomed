@@ -10,6 +10,11 @@
             "StackName": "amplify-biomed-develop-155515",
             "StackId": "arn:aws:cloudformation:eu-central-1:539518086188:stack/amplify-biomed-develop-155515/0f208cd0-7418-11ea-a09d-06fecd730058",
             "AmplifyAppId": "d269xn1iq3qzq5"
+        },
+        "categories": {
+            "auth": {
+                "biomed2b8f0607": {}
+            }
         }
     }
 }
