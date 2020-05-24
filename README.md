@@ -4,9 +4,7 @@ Simple web application intended to support currently biomedical student at Arush
 
 ---
 
-## Deployment on aws link below
-
-- [Links to Biomed](https://master.d269xn1iq3qzq5.amplifyapp.com/)
+## Deployment
 
 ## Develop
 
@@ -14,28 +12,6 @@ Simple web application intended to support currently biomedical student at Arush
 
 ```sh
 $ git clone https://github.com/rijkerd/biomed.git
-```
-
-- Install dependencies
-
-```sh
-$ npm install
-```
-
-- Follow instruction on how to configure aws amplify on reactjs
-
-  - [AWS AMPLIFY](https://aws-amplify.github.io/docs/js/react)
-
-- Run App Locally
-
-```sh
-$ npm start
-```
-
-- Run test
-
-```sh
-$ npm test
 ```
 
 ## Data model
