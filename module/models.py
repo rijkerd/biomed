@@ -15,7 +15,7 @@ class Module(models.Model):
 
 
 class Topic(models.Model):
-    topic_id = models.BigAutoField(
+    id = models.BigAutoField(
         primary_key=True, unique=True)
     name = models.CharField(max_length=100, blank=False, unique=True)
     description = models.CharField(max_length=200, blank=True)
@@ -26,10 +26,10 @@ class Topic(models.Model):
         return self.name
 
 
-class TopicFile(models.Model):
-    name = models.CharField(default='Test', max_length=100)
+class Resource(models.Model):
     topic = models.ForeignKey(
-        Topic, on_delete=models.CASCADE, default='0001')
+        Topic, on_delete=models.CASCADE, related_name='resources')
+    name = models.CharField(default='Test', max_length=100)
     url = models.FileField(upload_to='files', blank=False)
 
     def __str__(self):

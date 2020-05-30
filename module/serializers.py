@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Module, Topic, TopicFile
+from .models import Module, Topic, Resource
 
 
 class ModuleSerializer(serializers.ModelSerializer):
@@ -8,14 +8,17 @@ class ModuleSerializer(serializers.ModelSerializer):
         fields = ['name', 'description']
 
 
-class TopicFileSerializer(serializers.HyperlinkedModelSerializer):
+class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TopicFile
-        fields = '__all__'
+        model = Resource
+        fields = ('id', 'name', 'url')
 
 
-class TopicSerializer(serializers.HyperlinkedModelSerializer):
-    # resources = serializers.HyperlinkedModelSerializer(many=True,view_name)
+class TopicSerializer(serializers.ModelSerializer):
+    resources = ResourceSerializer(
+        many=True, read_only=True)
+
     class Meta:
         model = Topic
-        fields = ['name', 'description', 'topic_id']
+        # fields = ['name', 'description', 'topic_id', 'resources']
+        fields = "__all__"
