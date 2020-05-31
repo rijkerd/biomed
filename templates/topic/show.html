@@ -1,26 +1,33 @@
 {% extends 'layouts/base.html' %}
 
+{% load static %}
 
 {% block content %}
 
-{% for topic in topics  %}
-<h1 class="title">
-    {{topic.name}}
-</h1>
-<h2 class="subtitle">
-    {{topic.description}}
-</h2>
-<div class="content">
-    <ol type="1">
 
+<div class="section">
+    {% for topic in topics  %}
+    <h1 class="title">
+        {{topic.name}}
+    </h1>
+    <h2 class="subtitle">
+        {{topic.description}}
+    </h2>
+    <div class="content">
         {% for i in topic.resources  %}
-        <li>{{i.name}}</li>
+        <div class="box" style="margin-bottom: 2px;">
+            <span>{{i.name}}</span>
+            <span style="float: right;" class="icon">
+                <a href="{{i.url}}" target="_blank"><i class="fas fa-download"></i></a>
+            </span>
+        </div>
         {% endfor %}
+    </div>
 
-    </ol>
+    {% endfor %}
 </div>
 
-{% endfor %}
+
 
 
 
