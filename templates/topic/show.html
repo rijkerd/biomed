@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+
+
+{% block content %}
+
+{% for topic in topics  %}
+<h1 class="title">
+    {{topic.name}}
+</h1>
+<h2 class="subtitle">
+    {{topic.description}}
+</h2>
+<div class="content">
+    <ol type="1">
+
+        {% for i in topic.resources  %}
+        <li>{{i.name}}</li>
+        {% endfor %}
+
+    </ol>
+</div>
+
+{% endfor %}
+
+
+
+{% endblock content %}
