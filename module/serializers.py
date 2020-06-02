@@ -5,7 +5,7 @@ from .models import Module, Topic, Resource
 class ModuleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Module
-        fields = ['name', 'description']
+        fields = "__all__"
 
 
 class ResourceSerializer(serializers.ModelSerializer):
