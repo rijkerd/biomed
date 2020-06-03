@@ -1,6 +1,6 @@
 ## Biomed(WIP)
 
-Simple web application intended to support currently biomedical student at Arusha Technical College to share resources such as notes.
+Simple web application intended to support currently biomedical student at Arusha Technical College to share related class resources
 
 ---
 
@@ -17,18 +17,6 @@ $ git clone https://github.com/rijkerd/biomed.git
 ## Data model
 
 ![BIOMED Context Diagram](./docs/domain.png)
-
-## Available features:
-
-    - User Authentication
-
-## Tools used include
-
-    - AWS AMPLIFY
-    - DIA DIAGRAM TOOL
-    - REACT JS
-    - GIT
-    - VSCODE EDITOR
 
 ## Contribute
 
