@@ -13,6 +13,7 @@ djangorestframework = "*"
 uuid = "*"
 django-storages = "*"
 boto3 = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.7"
