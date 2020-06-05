@@ -5,13 +5,18 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 
-from .models import Topic
-from .serializers import TopicSerializer
+from .models import Topic, Resource
+from .serializers import TopicSerializer, ResourceSerializer
 
 
 class TopicListJson(ListAPIView):
     queryset = Topic.objects.all()
     serializer_class = TopicSerializer
+
+
+class ResourceList(ListAPIView):
+    queryset = Resource.objects.all()
+    serializer_class = ResourceSerializer
 
 
 class TopicList(APIView):
