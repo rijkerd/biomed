@@ -1,17 +1,16 @@
 from django.urls import path
-from .views import ModuleList
-from django.views.generic.base import TemplateView
+from rest_framework.routers import DefaultRouter
+from .views import ModuleViewSet
 
-from topic.views import TopicList, TopicDetails, TopicListJson
+module_list = ModuleViewSet.as_view({
+    'get': 'list',
+})
 
+module_detail = ModuleViewSet.as_view({
+    'get': 'retrieve'
+})
 
-class TestTemplate(TemplateView):
-    template_name = "home.html"
+router = DefaultRouter()
+router.register(r'modules', ModuleViewSet, basename='module')
 
-
-urlpatterns = [
-    path('', TestTemplate.as_view()),
-    path('modules', ModuleList.as_view(), name='module-list'),
-    path('topics', TopicListJson.as_view(), name='topic-list'),
-    path('topics/<id>', TopicDetails.as_view(), name='topic-detail'),
-]
+urlpatterns = router.urls
