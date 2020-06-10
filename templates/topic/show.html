@@ -8,17 +8,17 @@
 <div class="section">
     {% for topic in topics  %}
     <h1 class="title">
-        {{topic.name}}
+        {{topic.module}} - {{topic.name}}
     </h1>
-    <h2 class="subtitle">
+    <h4 class="subtitle">
         {{topic.description}}
-    </h2>
+    </h4>
     <div class="content">
         {% for i in topic.resources  %}
         <div class="box" style="margin-bottom: 2px;">
-            <span>{{i.name}}</span>
+            <span>{{i.topic}}</span>
             <span style="float: right;" class="icon">
-                <a href="{{i.url}}" target="_blank"><i class="fas fa-download"></i></a>
+                <a href="{{i.location}}" target="_blank"><i class="fas fa-download"></i></a>
             </span>
         </div>
         {% endfor %}
