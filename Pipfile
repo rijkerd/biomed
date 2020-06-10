@@ -14,6 +14,8 @@ uuid = "*"
 django-storages = "*"
 boto3 = "*"
 python-decouple = "*"
+pyyaml = "*"
+uritemplate = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,0 +1,1040 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /modules/:
+    get:
+      operationId: listModules
+      description: ''
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        topics:
+                          type: array
+                          items:
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                readOnly: true
+                              module:
+                                type: string
+                                readOnly: true
+                              resources:
+                                type: array
+                                items:
+                                  properties:
+                                    id:
+                                      type: string
+                                      format: uuid
+                                      readOnly: true
+                                    topic:
+                                      type: string
+                                      readOnly: true
+                                    name:
+                                      type: string
+                                      maxLength: 100
+                                    description:
+                                      type: string
+                                      maxLength: 200
+                                    location:
+                                      type: string
+                                      format: binary
+                                    created_at:
+                                      type: string
+                                      format: date-time
+                                      readOnly: true
+                                    updated_at:
+                                      type: string
+                                      format: date-time
+                                      readOnly: true
+                                  required:
+                                  - location
+                                readOnly: true
+                              name:
+                                type: string
+                                maxLength: 100
+                              description:
+                                type: string
+                                maxLength: 200
+                              created_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                              updated_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                            required:
+                            - name
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        category:
+                          enum:
+                          - C
+                          - F
+                        code:
+                          type: string
+                          maxLength: 10
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - name
+          description: ''
+    post:
+      operationId: createModule
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 200
+                category:
+                  enum:
+                  - C
+                  - F
+                code:
+                  type: string
+                  maxLength: 10
+              required:
+              - name
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  topics:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        module:
+                          type: string
+                          readOnly: true
+                        resources:
+                          type: array
+                          items:
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                readOnly: true
+                              topic:
+                                type: string
+                                readOnly: true
+                              name:
+                                type: string
+                                maxLength: 100
+                              description:
+                                type: string
+                                maxLength: 200
+                              location:
+                                type: string
+                                format: binary
+                              created_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                              updated_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                            required:
+                            - location
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - name
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  category:
+                    enum:
+                    - C
+                    - F
+                  code:
+                    type: string
+                    maxLength: 10
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+  /modules/{id}/:
+    get:
+      operationId: retrieveModule
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this module.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  topics:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        module:
+                          type: string
+                          readOnly: true
+                        resources:
+                          type: array
+                          items:
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                readOnly: true
+                              topic:
+                                type: string
+                                readOnly: true
+                              name:
+                                type: string
+                                maxLength: 100
+                              description:
+                                type: string
+                                maxLength: 200
+                              location:
+                                type: string
+                                format: binary
+                              created_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                              updated_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                            required:
+                            - location
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - name
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  category:
+                    enum:
+                    - C
+                    - F
+                  code:
+                    type: string
+                    maxLength: 10
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+    put:
+      operationId: updateModule
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this module.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id002
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 200
+                category:
+                  enum:
+                  - C
+                  - F
+                code:
+                  type: string
+                  maxLength: 10
+              required:
+              - name
+          application/x-www-form-urlencoded:
+            schema: *id002
+          multipart/form-data:
+            schema: *id002
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  topics:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        module:
+                          type: string
+                          readOnly: true
+                        resources:
+                          type: array
+                          items:
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                readOnly: true
+                              topic:
+                                type: string
+                                readOnly: true
+                              name:
+                                type: string
+                                maxLength: 100
+                              description:
+                                type: string
+                                maxLength: 200
+                              location:
+                                type: string
+                                format: binary
+                              created_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                              updated_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                            required:
+                            - location
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - name
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  category:
+                    enum:
+                    - C
+                    - F
+                  code:
+                    type: string
+                    maxLength: 10
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+    patch:
+      operationId: partial_updateModule
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this module.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id003
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 200
+                category:
+                  enum:
+                  - C
+                  - F
+                code:
+                  type: string
+                  maxLength: 10
+          application/x-www-form-urlencoded:
+            schema: *id003
+          multipart/form-data:
+            schema: *id003
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  topics:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        module:
+                          type: string
+                          readOnly: true
+                        resources:
+                          type: array
+                          items:
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                readOnly: true
+                              topic:
+                                type: string
+                                readOnly: true
+                              name:
+                                type: string
+                                maxLength: 100
+                              description:
+                                type: string
+                                maxLength: 200
+                              location:
+                                type: string
+                                format: binary
+                              created_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                              updated_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                            required:
+                            - location
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - name
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  category:
+                    enum:
+                    - C
+                    - F
+                  code:
+                    type: string
+                    maxLength: 10
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+    delete:
+      operationId: destroyModule
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this module.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /topics/:
+    get:
+      operationId: listTopics
+      description: ''
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        module:
+                          type: string
+                          readOnly: true
+                        resources:
+                          type: array
+                          items:
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                readOnly: true
+                              topic:
+                                type: string
+                                readOnly: true
+                              name:
+                                type: string
+                                maxLength: 100
+                              description:
+                                type: string
+                                maxLength: 200
+                              location:
+                                type: string
+                                format: binary
+                              created_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                              updated_at:
+                                type: string
+                                format: date-time
+                                readOnly: true
+                            required:
+                            - location
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - name
+          description: ''
+    post:
+      operationId: createTopic
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id004
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 200
+              required:
+              - name
+          application/x-www-form-urlencoded:
+            schema: *id004
+          multipart/form-data:
+            schema: *id004
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  module:
+                    type: string
+                    readOnly: true
+                  resources:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        topic:
+                          type: string
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        location:
+                          type: string
+                          format: binary
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - location
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+  /topics/{id}/:
+    get:
+      operationId: retrieveTopic
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this topic.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  module:
+                    type: string
+                    readOnly: true
+                  resources:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        topic:
+                          type: string
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        location:
+                          type: string
+                          format: binary
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - location
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+    put:
+      operationId: updateTopic
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this topic.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id005
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 200
+              required:
+              - name
+          application/x-www-form-urlencoded:
+            schema: *id005
+          multipart/form-data:
+            schema: *id005
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  module:
+                    type: string
+                    readOnly: true
+                  resources:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        topic:
+                          type: string
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        location:
+                          type: string
+                          format: binary
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - location
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+    patch:
+      operationId: partial_updateTopic
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this topic.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id006
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 200
+          application/x-www-form-urlencoded:
+            schema: *id006
+          multipart/form-data:
+            schema: *id006
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                  module:
+                    type: string
+                    readOnly: true
+                  resources:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          readOnly: true
+                        topic:
+                          type: string
+                          readOnly: true
+                        name:
+                          type: string
+                          maxLength: 100
+                        description:
+                          type: string
+                          maxLength: 200
+                        location:
+                          type: string
+                          format: binary
+                        created_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                        updated_at:
+                          type: string
+                          format: date-time
+                          readOnly: true
+                      required:
+                      - location
+                    readOnly: true
+                  name:
+                    type: string
+                    maxLength: 100
+                  description:
+                    type: string
+                    maxLength: 200
+                  created_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  updated_at:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - name
+          description: ''
+    delete:
+      operationId: destroyTopic
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this topic.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
