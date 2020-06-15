@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="section">
+        <p class="title is-4">Module: {{module.name}} - {{module.code}}</p>
+        <hr />
+
+        {% for topic in module.topics  %}
+        <div class="box">
+            <h5 class="title is-5">{{topic.name}}</h5>
+            <a href="{% url 'topic-details' id=topic.id %}"><span>View Files</span></a>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

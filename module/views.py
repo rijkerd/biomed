@@ -36,4 +36,5 @@ class ModuleTopic(ModuleList):
     def get(self, request, id):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
+        print(serializer.data)
         return Response({'module': serializer.data})

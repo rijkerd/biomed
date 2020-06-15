@@ -6,15 +6,17 @@
 
 
 <div class="section">
-    {% for topic in topics  %}
     <h1 class="title">
-        {{topic.module}} - {{topic.name}}
+        {{topics.name}}
     </h1>
     <h4 class="subtitle">
-        {{topic.description}}
+        {{topics.description}}
     </h4>
+
     <div class="content">
-        {% for i in topic.resources  %}
+
+        {% if topics.resources|length >= 1 %}
+        {% for i in topics.resources  %}
         <div class="box" style="margin-bottom: 2px;">
             <span>{{i.topic}}</span>
             <span style="float: right;" class="icon">
@@ -22,9 +24,14 @@
             </span>
         </div>
         {% endfor %}
+        {% else %}
+        <div class="title">
+            <h3>Nothing found</h3>
+        </div>
+        {% endif %}
+
     </div>
 
-    {% endfor %}
 </div>
 
 
