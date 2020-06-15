@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="section">
+    {% for module in modules  %}
+    <div class="box">
+        <h1 class="title">
+            {{module.name}}
+        </h1>
+        <h4 class="subtitle">
+            {{module.description}}
+            <a href="{% url 'modules-details' id=module.id %}">View topics</a>
+        </h4>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+{% endblock content %}
