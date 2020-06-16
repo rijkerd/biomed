@@ -89,6 +89,8 @@ SITE_ID = 1
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ACCOUNT_LOGOUT_ON_GET = True
 
 
