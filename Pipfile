@@ -20,7 +20,7 @@ gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
 psycopg2-binary = "*"
-django-rest-auth = "*"
+django-rest-auth = {extras = ["with_social"], version = "*"}
 
 [requires]
 python_version = "3.7"
