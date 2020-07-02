@@ -1,15 +1,6 @@
 from rest_framework import serializers
-from .models import Topic, Resource
-# from module.serializers import ModuleSerializer
-
-
-class ResourceSerializer(serializers.ModelSerializer):
-    topic = serializers.SlugRelatedField(
-        many=False, read_only=True, slug_field='name')
-
-    class Meta:
-        model = Resource
-        fields = "__all__"
+from .models import Topic
+from resources.serializers import ResourceSerializer
 
 
 class TopicSerializer(serializers.ModelSerializer):

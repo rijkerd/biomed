@@ -6,9 +6,9 @@ module_list = ModuleViewSet.as_view({
     'get': 'list',
 })
 
-module_detail = ModuleViewSet.as_view({
-    'get': 'retrieve'
-})
+# module_detail = ModuleViewSet.as_view({
+#     'get': 'retrieve'
+# })
 
 router = DefaultRouter()
 router.register(r'modules', ModuleViewSet, basename='module')
