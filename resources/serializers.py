@@ -4,7 +4,7 @@ from .models import Resource
 
 class ResourceSerializer(serializers.ModelSerializer):
     topic = serializers.SlugRelatedField(
-        many=False, read_only=True, slug_field='name')
+        many=False, read_only=True, slug_field='id')
 
     class Meta:
         model = Resource

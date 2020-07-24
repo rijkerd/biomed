@@ -5,8 +5,8 @@ from resources.serializers import ResourceSerializer
 
 class TopicSerializer(serializers.ModelSerializer):
     module = serializers.SlugRelatedField(
-        many=False, read_only=True, slug_field='name')
-    resources = ResourceSerializer(many=True, read_only=True)
+        many=False, read_only=True, slug_field='id')
+    # resources = ResourceSerializer(many=True, read_only=True)
 
     class Meta:
         model = Topic
