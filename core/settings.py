@@ -101,6 +101,7 @@ ACCOUNT_LOGOUT_ON_GET = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
+    'https://biomed-web.herokuapp.com/'
 ]
 
 
