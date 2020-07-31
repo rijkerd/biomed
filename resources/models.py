@@ -21,3 +21,6 @@ class Resource(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_file_location(self):
+        return str(self.location)

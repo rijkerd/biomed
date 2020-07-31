@@ -98,12 +98,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_LOGOUT_ON_GET = True
 
-CORS_ALLOW_CREDENTIALS = None
-CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:3000',
-#     'https://biomed-web.herokuapp.com'
-# ]
+# CORS_ALLOW_CREDENTIALS = None
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'https://biomed-web.herokuapp.com'
+]
 
 
 # Database
@@ -210,8 +210,11 @@ if DEBUG is False:
 
     # # s3 public media settings
 
-    PUBLIC_MEDIA_LOCATION = 'media'
+    PUBLIC_MEDIA_LOCATION = 'media/public'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'core.storage_backends.PublicMediaStorage'
+
+    PRIVATE_MEDIA_LOCATION = 'media/private'
+    PRIVATE_FILE_STORAGE = 'core.storage_backends.PrivateMediaStorage'
 
     STATICFILES_DIRS = (str(BASE_DIR / 'static'),)
