@@ -39,7 +39,8 @@ def download_from_s3(request, id):
     s3 = boto3.client('s3')
     bucket_name = settings.AWS_STORAGE_BUCKET_NAME
     s3_file_path = resource
-    s3.download_file(bucket_name, resource)
+    print(s3_file_path)
+    # s3.download_file(bucket_name, resource)
     response_headers = {
         'response-content-type': 'application/force-download',
         'response-content-disposition': 'attachment;filename="%s"' % s3_file_path
