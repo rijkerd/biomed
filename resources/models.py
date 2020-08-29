@@ -23,4 +23,4 @@ class Resource(models.Model):
         return self.name
 
     def get_file_location(self):
-        return str(self.location)
+        return self.location.name
