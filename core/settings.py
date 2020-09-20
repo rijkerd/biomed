@@ -199,16 +199,17 @@ AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 
 AWS_DEFAULT_ACL = None
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3-us-west-2.amazonaws.com'
+AWS_REGION = 'us-west-2'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3-{AWS_REGION}.amazonaws.com'
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
 # # s3 public media settings
 
-PUBLIC_MEDIA_LOCATION = 'media/public'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
+# MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
 DEFAULT_FILE_STORAGE = 'core.storage_backends.PublicMediaStorage'
 
-PRIVATE_MEDIA_LOCATION = 'media/private'
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
 PRIVATE_FILE_STORAGE = 'core.storage_backends.PrivateMediaStorage'
 
 STATICFILES_DIRS = (str(BASE_DIR / 'static'),)
