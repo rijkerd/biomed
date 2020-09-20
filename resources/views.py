@@ -15,18 +15,26 @@ class ResourceViewSet(ModelViewSet):
 
 
 @api_view(['GET'])
+def view_from_s3(request, id):
+    document = Resource.objects.get(id=id)
+    key = document.get_file_location()
+    bucket_name = settings.AWS_STORAGE_BUCKET_NAME
+    s3_file_path = f"media/public/{key}"
+
+    s3_client = boto3.client('s3', region_name=settings.AWS_REGION)
+
+    url = s3_client.generate_presigned_url('get_object',
+                                           Params={'Bucket': bucket_name, 'Key': s3_file_path}, ExpiresIn=3600)
+
+    return HttpResponseRedirect(url)
+
+
+@api_view(['GET'])
 def download_from_s3(request, id):
     document = Resource.objects.get(id=id)
     key = document.get_file_location()
     bucket_name = settings.AWS_STORAGE_BUCKET_NAME
-    object_name = key.split('/')[0]
-    file_name = key.split('/')[1]
-    s3_file_path = f"media/{key}"
-
-    response_headers = {
-        'response-content-type': 'application/force-download',
-        'response-content-disposition': 'attachment;filename="%s"' % s3_file_path
-    }
+    s3_file_path = f"media/public/{key}"
 
     s3_client = boto3.client('s3', region_name="us-west-2")
     url = s3_client.generate_presigned_url('get_object',
