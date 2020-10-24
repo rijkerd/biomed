@@ -45,13 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
+    'djoser',
     'module',
     'topic',
     'users',
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
     'corsheaders',
     'resources',
 ]
@@ -81,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -90,13 +88,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 SITE_ID = 1
 
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'users.User'
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django_ses.SESBackend'
 
 ACCOUNT_LOGOUT_ON_GET = True
+
+DJOSER = {
+    # 'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    # 'SEND_ACTIVATION_EMAIL': True,
+    # 'USER_ID_FIELD': 'User._meta.id'
+}
 
 # CORS_ALLOW_CREDENTIALS = None
 CORS_ORIGIN_ALLOW_ALL = False
@@ -132,11 +135,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-# REST_AUTH_REGISTER_SERIALIZERS = {
-#     'REGISTER_SERIALIZER': 'users.serializers'
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -161,7 +159,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Dar_es_Salaam'
 
 USE_I18N = True
 
@@ -215,6 +213,10 @@ PRIVATE_FILE_STORAGE = 'core.storage_backends.PrivateMediaStorage'
 STATICFILES_DIRS = (str(BASE_DIR / 'static'),)
 
 STATIC_LOCATION = 'static'
+
+AWS_SES_REGION_NAME = config('AWS_SES_REGION_NAME')
+
+AWS_SES_REGION_ENDPOINT = config('AWS_SES_REGION_ENDPOINT')
 
 if DEBUG is False:
 

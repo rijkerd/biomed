@@ -3,9 +3,13 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-class CustomUser(AbstractUser):
+# TODO: Setup user registration with CRUD
+# TODO: Setup email verification
+# TODO: Setup user roles and permissions IE: Student and Teacher permissions
+
+
+class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    # admission_number = models.IntegerField(max_length=11, unique=True)
 
     class Meta:
         ordering = ['last_login']
