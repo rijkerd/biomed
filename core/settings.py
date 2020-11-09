@@ -99,6 +99,10 @@ DJOSER = {
     # 'ACTIVATION_URL': '#/activate/{uid}/{token}',
     # 'SEND_ACTIVATION_EMAIL': True,
     # 'USER_ID_FIELD': 'User._meta.id'
+    'SERIALIZERS': {
+        'user': 'users.serializers.UserSerializer',
+        'user_create': 'users.serializers.UserRegistrationSerializer',
+    },
 }
 
 # CORS_ALLOW_CREDENTIALS = None
@@ -144,6 +148,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
