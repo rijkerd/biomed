@@ -99,8 +99,8 @@ EMAIL_HOST = ''
 ACCOUNT_LOGOUT_ON_GET = True
 
 DJOSER = {
-    'ACTIVATION_URL': '#/activate/{uid}/{token}',
-    'SEND_ACTIVATION_EMAIL': True,
+    # 'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    # 'SEND_ACTIVATION_EMAIL': True,
     # 'USER_ID_FIELD': 'User._meta.id'
     'SERIALIZERS': {
         'user': 'users.serializers.UserSerializer',
