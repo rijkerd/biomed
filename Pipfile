@@ -26,4 +26,4 @@ djoser = "==2.0.5"
 django-smtp-ssl = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
