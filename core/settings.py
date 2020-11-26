@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'users',
     'corsheaders',
     'resources',
+    'django_ses'
 ]
 
 MIDDLEWARE = [
@@ -93,11 +94,13 @@ AUTH_USER_MODEL = 'users.User'
 
 EMAIL_BACKEND = 'django_ses.SESBackend'
 
+EMAIL_HOST = ''
+
 ACCOUNT_LOGOUT_ON_GET = True
 
 DJOSER = {
-    # 'ACTIVATION_URL': '#/activate/{uid}/{token}',
-    # 'SEND_ACTIVATION_EMAIL': True,
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
     # 'USER_ID_FIELD': 'User._meta.id'
     'SERIALIZERS': {
         'user': 'users.serializers.UserSerializer',
