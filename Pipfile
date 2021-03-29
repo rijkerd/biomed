@@ -9,7 +9,7 @@ autopep8 = "*"
 
 [packages]
 django = "*"
-djangorestframework = "==3.11"
+djangorestframework = "==3.11.2"
 uuid = "*"
 django-storages = "*"
 boto3 = "*"
