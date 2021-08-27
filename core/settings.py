@@ -109,7 +109,7 @@ DJOSER = {
 }
 
 # CORS_ALLOW_CREDENTIALS = None
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'https://biomed-web.herokuapp.com'
@@ -181,16 +181,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-# STATIC_URL = '/static/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# MEDIA_URL = 'media/'
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [str(BASE_DIR / "static")]
 STATIC_ROOT = str(BASE_DIR / "static_root")
-# MEDIA_ROOT = str(BASE_DIR / "media")
-# MEDIA_URL = "/media/"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # SESSION_COOKIE_SECURE = True
