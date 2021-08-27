@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  biomed:
+    build:
+      context: ./Dockerfile.dev
+    command:
+      - /bin/bash
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py runserver 0.0.0.0:8000
+    environment:
+      - AWS_ACCESS_KEY_ID="AKIAX3HOIVQWGRWLZPQQ"
+      - AWS_SECRET_ACCESS_KEY="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"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/biomed
+      - /biomed/.sqlite
+    tty: true
+    restart: unless-stopped
