@@ -19,11 +19,11 @@ uritemplate = "*"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
-psycopg2-binary = "2.9"
 django-cors-headers = "*"
 django-ses = "*"
 djoser = "==2.0.5"
 django-smtp-ssl = "*"
+mysqlclient = "*"
 
 [requires]
 python_version = "3.9"
