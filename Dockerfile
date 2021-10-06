@@ -8,15 +8,16 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /usr/src/app
 
 
-# install psycopg2 dependencies
-RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+# Install base dependencies
+RUN apk update \ 
+    && apk add build-base mysql-dev bash
 
 
 # Install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install pipenv
+COPY ./Pipfile .
+RUN pipenv install --skip-lock --system --dev
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
@@ -28,4 +29,4 @@ COPY . .
 
 EXPOSE 8000
 
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["sh","/usr/src/app/entrypoint.sh"]
