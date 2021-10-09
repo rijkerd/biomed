@@ -27,6 +27,6 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 # Copy project
 COPY . .
 
-EXPOSE 8000
+EXPOSE 80
 
 ENTRYPOINT ["sh","/usr/src/app/entrypoint.sh"]
