@@ -1,22 +1,29 @@
-version: "3.8"
+version: "3.9"
 
 services:
-  db:
-    image: postgres:13.0-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=hello_django
-      - POSTGRES_PASSWORD=hello_django
-      - POSTGRES_DB=hello_django_dev
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    container_name: biomed
+    restart: on-failure
     volumes:
       - .:/usr/src/app/
     ports:
-      - 8000:8000
+      - "8000:8000"
     env_file:
       - ./.env.dev
+    depends_on:
+      - db
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: biomed
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "32000:3306"
+    volumes:
+      - ./config/my.cnf:/etc/mysql/conf.d/custom.cnf
+      - biomed_db:/var/lib/mysql
 volumes:
-  postgres_data:
+  biomed_db:
