@@ -15,7 +15,7 @@ class ResourceViewSet(ModelViewSet):
 
 
 @api_view(['GET'])
-def view_from_s3(request, id):
+def view_from_s3(id):
     document = Resource.objects.get(id=id)
     key = document.get_file_location()
     bucket_name = settings.AWS_STORAGE_BUCKET_NAME
@@ -30,7 +30,7 @@ def view_from_s3(request, id):
 
 
 @api_view(['GET'])
-def download_from_s3(request, id):
+def download_from_s3(id):
     document = Resource.objects.get(id=id)
     key = document.get_file_location()
     bucket_name = settings.AWS_STORAGE_BUCKET_NAME

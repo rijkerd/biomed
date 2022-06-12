@@ -11,15 +11,6 @@ course_type = [('C', 'Core'), ('F', 'Fundamental')]
 # TODO: Module need to be linked to a programme ie Diploma / Degree in Biomedical engineering
 
 class Module(models.Model):
-    """
-    Is representation of a subject take by an individual/student on a 
-    particular programme.
-
-    - Attached to a particalar NTA Level eg. NTA 5
-
-    example: Radio Transmission ETT-01025
-
-    """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, blank=False, unique=True)
     description = models.CharField(max_length=200, blank=True)
