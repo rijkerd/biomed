@@ -1,0 +1,7 @@
+-r ./base.txt
+
+pylint
+django-debug-toolbar
+pylint-django
+isort
+flake8

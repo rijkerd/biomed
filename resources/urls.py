@@ -1,5 +1,4 @@
-from django.urls import path
-from django.conf.urls import url
+from django.urls import re_path as url
 from rest_framework.routers import DefaultRouter
 from .views import ResourceViewSet, download_from_s3, view_from_s3
 

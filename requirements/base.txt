@@ -1,0 +1,14 @@
+django
+djangorestframework
+uuid
+django-storages
+boto3
+pyyaml
+psycopg2
+uritemplate
+django-cors-headers
+django-environ
+whitenoise
+django-ses
+djoser
+django-smtp-ssl
