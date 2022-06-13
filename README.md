@@ -20,7 +20,7 @@ $ git clone https://github.com/rijkerd/biomed.git
 
 ## Contribute
 
-The project is still in the prototypinh stage. If you would like to contribute reach me out.
+The project is still in the prototyping stage. If you would like to contribute reach me out.
 
 ## License
 
