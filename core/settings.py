@@ -123,12 +123,12 @@ CORS_ORIGIN_WHITELIST = [
 
 DATABASES = {
     'default': {
-        'ENGINE': env('DATABASE_ENGINE', default='django.contrib.gis.db.backends.postgis'),
+        'ENGINE': env('DATABASE_ENGINE', default='django.db.backends.postgresql'),
         'NAME': env('DATABASE_NAME', default='biomed'),
         'USER': env('DATABASE_USER', default='biomed'),
         'PASSWORD': env('DATABASE_PASSWORD', default='biomed'),
         'HOST': env('DATABASE_HOST', default='127.0.0.1'),
-        'PORT': env('DATABASE_PORT', default='5432'),
+        'PORT': env('DATABASE_PORT', default='5433'),
         'CONN_MAX_AGE': env.int('DATABASE_CONN_MAX_AGE', default=0),
         'ATOMIC_REQUESTS': env.bool('DATABASE_ATOMIC_REQUESTS', default=True)
     }

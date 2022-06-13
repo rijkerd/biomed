@@ -1,22 +1,22 @@
 #!/bin/sh
 
-if [ "$DATABASE" = "mysql" ]
+if [ "$DATABASE_NAME" = "postgres" ]
 then
-    echo "Waiting for mysql..."
+    echo "Waiting for postgres..."
 
-    echo $MYSQL_HOST
+    echo $DATABASE_HOST
 
-    echo $MYSQL_PORT
+    echo $DATABASE_PORT
 
-    while ! nc -z $MYSQL_HOST $MYSQL_PORT; do
-      sleep 1
+    while ! nc -z $DATABASE_HOST $DATABASE_PORT; do
+      sleep 0.5
     done
 
-    echo "MySQL started"
+    echo "Postgres started"
 fi
 
 python manage.py flush --no-input
 python manage.py migrate
-python manage.py runserver 0.0.0.0:8000
+python manage.py runserver
 
 exec "$@"

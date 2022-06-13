@@ -9,15 +9,15 @@ WORKDIR /usr/src/app
 
 
 # Install base dependencies
-RUN apk update \ 
-    && apk add build-base mysql-dev bash
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev libffi-dev
 
 
 # Install dependencies
 RUN pip install --upgrade pip
-RUN pip install pipenv
-COPY ./Pipfile .
-RUN pipenv install --skip-lock --system --dev
+COPY ./requirements /usr/src/app/requirements
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
@@ -27,6 +27,6 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 # Copy project
 COPY . .
 
-EXPOSE 80
+EXPOSE 8000
 
 ENTRYPOINT ["sh","/usr/src/app/entrypoint.sh"]
