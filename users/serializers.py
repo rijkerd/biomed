@@ -1,3 +1,4 @@
+
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
@@ -9,7 +10,7 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
                                      validators=[UniqueValidator(queryset=User.objects.all())])
     email = serializers.EmailField(required=True, validators=[
                                    UniqueValidator(queryset=User.objects.all())])
-
+    
     def create(self, validated_data):
         user = User(
             username=validated_data['username'], email=validated_data['email'])
@@ -18,7 +19,7 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
         return user
 
     class Meta(BaseUserRegistrationSerializer.Meta):
-        fields = ('email', 'username', 'password')
+        fields = ('email', 'username', 'password','user_type')
 
 
 class UserSerializer(serializers.ModelSerializer):
