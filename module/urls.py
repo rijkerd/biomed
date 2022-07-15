@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from .views import ModuleViewSet, ListAll, ModuleTopic
+
+from .views import ListAll, ModuleTopic, ModuleViewSet
 
 module_list = ModuleViewSet.as_view({
     'get': 'list',

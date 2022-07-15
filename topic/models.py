@@ -1,5 +1,7 @@
 import uuid
+
 from django.db import models
+
 from module.models import Module
 
 

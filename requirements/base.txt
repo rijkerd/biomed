@@ -12,3 +12,4 @@ whitenoise
 django-ses
 djoser
 django-smtp-ssl
+dj_database_url

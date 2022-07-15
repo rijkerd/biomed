@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 from pathlib import Path
 
+import dj_database_url
 import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -140,7 +141,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
@@ -233,6 +234,13 @@ AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT',default='')
 
 if DEBUG is False:
 
+
+    # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
     STATIC_LOCATION = 'static'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
     STATICFILES_STORAGE = 'core.storage_backends.StaticStorage'
+
+    DATABASES['default'] = dj_database_url.config(
+        default=env('DATABASE_URL'),ssl_require=True
+    )

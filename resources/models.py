@@ -1,7 +1,9 @@
 import uuid
+
 from django.db import models
-from topic.models import Topic
+
 from core.storage_backends import PublicMediaStorage
+from topic.models import Topic
 
 
 class Resource(models.Model):

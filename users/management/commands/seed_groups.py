@@ -1,11 +1,12 @@
 from unicodedata import name
-from django.core.management.base import BaseCommand
-from django.contrib.auth.models import Group,Permission
-from django.contrib.contenttypes.models import ContentType
 
-from topic.models import Topic
-from resources.models import Resource
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
+from django.core.management.base import BaseCommand
+
 from module.models import Module
+from resources.models import Resource
+from topic.models import Topic
 
 
 class Command(BaseCommand):

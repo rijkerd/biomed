@@ -1,8 +1,8 @@
 
 from django.urls import re_path as url
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet
 
+from .views import UserViewSet
 
 users_list = UserViewSet.as_view({
     'get': 'list',

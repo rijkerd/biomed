@@ -1,5 +1,7 @@
 import uuid
+
 from django.db import models
+
 # from topic.models import Topic
 
 course_type = [('C', 'Core'), ('F', 'Fundamental')]

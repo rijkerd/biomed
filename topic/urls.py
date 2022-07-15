@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from .views import TopicViewSet, ShowTopicResources
+
+from .views import ShowTopicResources, TopicViewSet
 
 topic_list = TopicViewSet.as_view({
     'get': 'list',

@@ -1,9 +1,10 @@
 import boto3
 from django.conf import settings
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.decorators import api_view
-from rest_framework import request, response
 from django.http import HttpResponseRedirect
+from rest_framework import request, response
+from rest_framework.decorators import api_view
+from rest_framework.viewsets import ModelViewSet
+
 from .models import Resource
 from .serializers import ResourceSerializer
 
